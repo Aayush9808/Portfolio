@@ -119,30 +119,15 @@ card3d?.addEventListener('mouseleave', () => {
 });
 
 // ==========================================
-// AVATAR EYES FOLLOW CURSOR
+// SMOOTH SCROLL FOR NAVIGATION
 // ==========================================
-document.addEventListener('mousemove', (e) => {
-    const eyes = document.querySelectorAll('.pupil');
-    
-    eyes.forEach(pupil => {
-        const eye = pupil.parentElement;
-        const eyeRect = eye.getBoundingClientRect();
-        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-        
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        
-        const deltaX = mouseX - eyeCenterX;
-        const deltaY = mouseY - eyeCenterY;
-        
-        const angle = Math.atan2(deltaY, deltaX);
-        const distance = Math.min(5, Math.sqrt(deltaX * deltaX + deltaY * deltaY) / 20);
-        
-        const pupilX = Math.cos(angle) * distance;
-        const pupilY = Math.sin(angle) * distance;
-        
-        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     });
 });
 

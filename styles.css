@@ -386,7 +386,6 @@ body {
     border-radius: 50%;
     background: var(--gradient-tech);
     padding: 5px;
-    animation: rotate 10s linear infinite;
     margin-bottom: 2rem;
 }
 
@@ -403,111 +402,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
-}
-
-/* Animated Avatar */
-.avatar-container {
-    width: 180px;
-    height: 220px;
+    overflow: hidden;
     position: relative;
-    animation: avatarFloat 3s ease-in-out infinite;
 }
 
-@keyframes avatarFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
-
-.avatar-head {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, #ffb6c1 0%, #ffa8bc 100%);
-    border-radius: 50%;
-    position: relative;
-    margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
-}
-
-.avatar-hair {
-    width: 110px;
-    height: 60px;
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    border-radius: 50% 50% 0 0;
-    position: absolute;
-    top: -10px;
-    left: -5px;
-    z-index: -1;
-}
-
-.avatar-face {
+.main-profile-photo {
     width: 100%;
     height: 100%;
-    position: relative;
-    border-radius: 50%;
-}
-
-.eye {
-    width: 18px;
-    height: 18px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.eye-left {
-    left: 25px;
-}
-
-.eye-right {
-    right: 25px;
-}
-
-.pupil {
-    width: 8px;
-    height: 8px;
-    background: #2c3e50;
+    object-fit: cover;
     border-radius: 50%;
     position: relative;
-    transition: transform 0.1s ease;
+    z-index: 2;
 }
 
-.avatar-mouth {
-    width: 30px;
-    height: 15px;
-    border: 2px solid #2c3e50;
-    border-top: none;
-    border-radius: 0 0 30px 30px;
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
-.avatar-body {
-    width: 80px;
-    height: 100px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    margin: -10px auto 0;
-    border-radius: 0 0 40px 40px;
-    position: relative;
-}
-
-.avatar-shirt {
-    width: 40px;
-    height: 30px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 0 0 20px 20px;
-}
 
 .status-indicator {
     display: flex;
@@ -1238,12 +1146,14 @@ section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-    max-width: 100%;
+    max-width: 1400px;
     width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .contact-card {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     text-align: center;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -1251,9 +1161,12 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 200px;
-    min-height: 200px;
-    max-height: 200px;
+    height: 220px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 220px;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .contact-card:hover .contact-icon {
@@ -1287,9 +1200,10 @@ section {
 .contact-card p {
     color: var(--primary);
     font-size: 0.95rem;
-    word-break: normal;
-    white-space: nowrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
     max-width: 100%;
+    line-height: 1.4;
 }
 
 /* ========================================
@@ -1418,12 +1332,22 @@ section {
     }
     
     .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .contact-card {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 180px;
+        padding: 1.5rem;
     }
     
     .contact-card p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        word-break: break-all;
     }
     
     .achievement-card {
