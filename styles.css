@@ -413,6 +413,21 @@ body {
     border-radius: 50%;
     position: relative;
     z-index: 2;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+.main-profile-photo.zoom-out {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.main-profile-photo.zoom-in {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+    filter: blur(0px);
 }
 
 
@@ -1045,16 +1060,31 @@ section {
 }
 
 .extra-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 12px;
-    background: var(--gradient-purple);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     color: white;
     margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.extra-icon.club-logo {
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    padding: 0;
+}
+
+.extra-icon.club-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
 }
 
 .extra-card h4 {

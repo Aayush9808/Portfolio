@@ -1,6 +1,42 @@
 // Main JavaScript for Portfolio Interactions and Animations
 
 // ==========================================
+// ROTATING PROFILE PHOTO
+// ==========================================
+const rotatingPhoto = document.getElementById('rotating-photo');
+const photos = [
+    'assets/images/speaking.jpg',
+    'assets/images/profile.jpg',
+    'assets/images/outdoor.jpg'
+];
+let currentPhotoIndex = 0;
+
+function rotatePhoto() {
+    // Zoom out with fade
+    rotatingPhoto.classList.add('zoom-out');
+    
+    setTimeout(() => {
+        // Change photo
+        currentPhotoIndex = (currentPhotoIndex + 1) % photos.length;
+        rotatingPhoto.src = photos[currentPhotoIndex];
+        
+        // Remove zoom-out
+        rotatingPhoto.classList.remove('zoom-out');
+        
+        // Add zoom-in
+        rotatingPhoto.classList.add('zoom-in');
+        
+        // Remove zoom-in class after animation
+        setTimeout(() => {
+            rotatingPhoto.classList.remove('zoom-in');
+        }, 800);
+    }, 800);
+}
+
+// Rotate photo every 2.5 seconds
+setInterval(rotatePhoto, 2500);
+
+// ==========================================
 // NAVIGATION
 // ==========================================
 const hamburger = document.querySelector('.hamburger');
